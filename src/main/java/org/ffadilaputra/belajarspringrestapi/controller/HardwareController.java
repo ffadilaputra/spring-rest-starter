@@ -37,7 +37,7 @@ public class HardwareController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(response);
     }
-    @PutMapping
+    @PutMapping(value = "{id}")
     ResponseEntity<Response> update(@PathVariable("id") Long id, @RequestBody @Validated Hardware hardware){
         String nameOfCurrMethod = new Throwable().getStackTrace()[0].getMethodName();
         Response response = new Response();
@@ -83,7 +83,7 @@ public class HardwareController {
                 .body(response);
     }
 
-    @DeleteMapping
+    @DeleteMapping(value = "{id}")
     ResponseEntity<Response> deleteById(@PathVariable("id") Long id){
         String nameOfCurrMethod = new Throwable().getStackTrace()[0].getMethodName();
         Response response = new Response();
@@ -97,14 +97,4 @@ public class HardwareController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(response);
     }
-
-    @Bean
-    public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-        MappingJackson2HttpMessageConverter converter =
-                new MappingJackson2HttpMessageConverter(mapper);
-        return converter;
-    }
-
 }
