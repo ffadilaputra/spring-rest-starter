@@ -10,6 +10,8 @@
 mvn clean && mvn spring-boot:run
 ```
 
+Server running on ```localhost:8089/welang``` and the documentation API ``` localhost:8089/welang/swagger-ui.html ```
+
 ## Dependency
 - Spring boot
 - h2,for virtual database
